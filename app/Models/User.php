@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Conversation;
+use App\Presenters\UserPresenter;
 
 class User extends Authenticatable
 {
@@ -43,8 +44,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function present()
+    {
+        return new UserPresenter($this);
+    }
+
     public function conversations()
     {
         return $this->belongsToMany(Conversation::class);
     }
+
 }

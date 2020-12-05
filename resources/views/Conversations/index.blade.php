@@ -10,7 +10,8 @@
                     <div class="font-weight-bold">
                         {{-- Displaying the name of all users part of the conversation --}}
                         @foreach($conversation->users as $user)
-                            {{$user->name}}@if($conversation->users->last() != $user), @endif
+                            {{-- Applies presenter to logged in user, adds a commer between names --}}
+                            {{ $user->present()->name() }}@if($conversation->users->last() != $user), @endif 
                         @endforeach
                     </div>
                     <p class='text-muted mb-0 text-truncate d-flex align-items-center'>
