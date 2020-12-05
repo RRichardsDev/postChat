@@ -1,0 +1,53 @@
+a:hover {
+	text-decoration: none;
+}
+.message-thumb{
+	background-color: #fff;
+}
+.message-thumb:hover{
+	background-color: #dfdfdf;
+}
+
+.message-sent{
+	background-color: #3490dc;
+	color: #fff;
+	margin-top: 20px;
+	padding: 5px;
+	min-height: auto;
+	width:fit-content; 
+    height:fit-content;
+	display: flex;
+	margin-left: auto;
+	border-radius: 3px;
+	/*align-self: flex-end;*/
+}
+.message-recieved{
+	background-color: #3490dc;
+	color: #fff;
+	margin-top: 20px;
+	padding: 5px;
+	min-height: 30px;
+	width:fit-content; 
+    height:fit-content;
+	display: flex;
+	margin-right: auto;
+	border-radius: 3px;
+
+	/*align-self: flex-start;*/
+}
+#message-container{
+	
+	background-color: #fff;
+	height: 88vh;
+	flex-direction: column;
+	
+}
+#message-send-container{
+	margin-top: 0.3rem;
+}
+#messages-container{
+	
+	height: 65vh;
+	flex-grow: 1;
+  	overflow: scroll;
+}
