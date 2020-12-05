@@ -25,7 +25,12 @@
     </div>
     {{-- show message --}}
     <div id="message-container" class="col-md-8">
-        <div id="users-container"></div>
+        <div id="users-container">
+            <div class="d-flex justify-content-between p-3">
+                <p class="font-weight-bold">Create a new chat...</p>
+                <a class="font-weight-bold" id="convosation_add_someone" href="#">Add someone...</a>
+            </div>
+        </div>
         <div id="messages-container"></div>
         <div id="message-send-container" style="width:100%;">
             <form id="message-send">

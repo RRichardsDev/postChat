@@ -29,7 +29,7 @@
         {{-- Displays list of users in the convosation --}}
         <div id="users-container">
             <div class="d-flex justify-content-between p-3">
-                <div class="font-weight-bold text-muted">
+                <div class="font-weight-bold">
                     @foreach($chat->users as $user)
                         {{$user->present()->name()}}@if($chat->users->last() != $user), @endif 
                     @endforeach

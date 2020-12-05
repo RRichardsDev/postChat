@@ -78,3 +78,14 @@ a:hover {
 	margin-top: 0.3rem;
 }
 
+
+/*Profile Page*/
+
+.thumb-overlay:hover{
+	display: block;
+    opacity: 0.5;
+}
+.thumb-overlay{
+	 display: none; 
+}
+
