@@ -6,7 +6,7 @@
         {{-- checking for, then looping through all logged in user conversations --}}
         @if($conversations->count())
             @foreach($conversations as $conversation)
-                <a href="#" class="message-thumb d-block p-4 mb-2">
+                <a href="{{route('conversations.show', $conversation)}}" class="message-thumb d-block p-4 mb-2">
                     <div class="font-weight-bold">
                         {{-- Displaying the name of all users part of the conversation --}}
                         @foreach($conversation->users as $user)
@@ -25,33 +25,8 @@
     </div>
     {{-- show message --}}
     <div id="message-container" class="col-md-8">
-        
-        <div id="messages-container">
-            <div id="test-message" class="message-sent" >                             
-                <div >hello</div>                   
-            </div>
-            {{-- <div class="message-recieved" >                    
-                hello are yoou?               
-            </div>
-            <div class="message-sent" >                    
-                hello                   
-            </div>
-            <div class="message-sent" >                    
-                hello                   
-            </div>
-            <div class="message-sent" >                    
-                hello                   
-            </div>
-            <div class="message-sent" >                    
-                hello                   
-            </div>
-            <div class="message-sent" >                    
-                hello                   
-            </div>
-            <div class="message-sent" >                    
-                hello Minim magna sint qui aliquip non qui deserunt ullamco pariatur et anim ad nulla nostrud dolore dolor incididunt nulla dolore et laboris sit esse labore sed enim in.                  
-            </div> --}}
-        </div>
+        <div id="users-container"></div>
+        <div id="messages-container"></div>
         <div id="message-send-container" style="width:100%;">
             <form id="message-send">
                 <div class="form-group mb-2">

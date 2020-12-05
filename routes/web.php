@@ -26,4 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/account/profile', [AccountController::class, 'index'])->name('accountProfile');
 
 Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
-// Route::get('account/messages/{id}', [App\Http\Controllers\MessageController::class, 'getConversations'])->name('getConversations');
+Route::get('/conversations/{conversation}', [ConversationController::class, 'show'])->name('conversations.show');
+

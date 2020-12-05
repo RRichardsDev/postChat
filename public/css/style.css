@@ -19,10 +19,19 @@ a:hover {
 	display: flex;
 	margin-left: auto;
 	border-radius: 3px;
-	/*align-self: flex-end;*/
+}
+.message-sent-container{
+	width:fit-content; 
+    height:fit-content;
+	margin-left: auto;
+}
+.message-sent-name{
+	width:fit-content; 
+	margin-left: auto;
+	font-size: 12px;
 }
 .message-recieved{
-	background-color: #3490dc;
+	background-color: #ababab;
 	color: #fff;
 	margin-top: 20px;
 	padding: 5px;
@@ -32,22 +41,40 @@ a:hover {
 	display: flex;
 	margin-right: auto;
 	border-radius: 3px;
-
-	/*align-self: flex-start;*/
 }
+.message-recieved-container{
+	width:fit-content; 
+    height:fit-content;
+	margin-right: auto;
+}
+.message-recieved-name{
+	width:fit-content; 
+	margin-right: auto;
+	font-size: 12px;
+}
+
 #message-container{
-	
 	background-color: #fff;
 	height: 88vh;
 	flex-direction: column;
-	
 }
-#message-send-container{
-	margin-top: 0.3rem;
-}
-#messages-container{
-	
-	height: 65vh;
+
+#users-container{
+	border-bottom: 1px solid #c3cad1;
+	height: 60px;
 	flex-grow: 1;
   	overflow: scroll;
 }
+
+#messages-container{
+	height: 55vh;
+	flex-grow: 1;
+  	overflow: scroll;
+	margin-bottom: 15px;
+	border-radius: 3px;
+}
+
+#message-send-container{
+	margin-top: 0.3rem;
+}
+

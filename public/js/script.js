@@ -1,28 +1,34 @@
 $(document).ready(function()
 {
 	scrollToBottom();
-    $('body').on('click','.message-thumb',function(e) {
-         e.preventDefault()
-         $("#test-message").text($(this).text());
-    });
+    // $('body').on('click','.message-thumb',function(e) {
+    //      // e.preventDefault()
+    //      // $("#test-message").text($(this).text());
+    //      alert($conversations);
+    // });
     // fetchRecords(0);
 
-    // $(".message-thumb").click(function(){
-    // 	// event.preventDefault();
-    // 	// alert($(this).text())
+    $(".message-thumb").click(function(){
+    	// event.preventDefault();
+    	// alert($(this).text())
     	
-    // })
+    })
     $("#send_message").click(function(){
     	event.preventDefault();
         var message = $("#message-text").val();
+        var messageUser = $("#message-user-name").val();
     	$("#message-text").val('');
-    	$( "#messages-container" ).append( '<div class="message-sent"><div>'+ message+'</div></div>' );
+    	$( "#messages-container" ).append( '<div class="message-sent-container">' +
+                                            '<div class="message-sent" >' +
+                                                message +
+                                            '</div>' +
+                                            '<div class="message-sent-name">' +
+                                                 '<p class="text-muted ">'+ messageUser +'</p>' +
+                                            '</div>' +
+                                        '</div>'
+                                    );
     	scrollToBottom();
     })
-    $('#btn_testconvos').click(function(){
-        
-        
-       });
 
 
     function scrollToBottom(){
