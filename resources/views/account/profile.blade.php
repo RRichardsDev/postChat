@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="row mb-4">
                         <div class="col-md-3">
-                            <a href="#"><div style="height: 200px; width: 200px; background-color: gray; "></div></a>
+                            <a href="#"><img src="{{ auth()->user()->present()->profilePic() }}" style="height: 200px; width: 200px; background-color: gray; "></img></a>
                         </div>
                         <div class="col-md-9 justify-content-bottom">
                             <h1 class="card-title mb-0" style="position: absolute; bottom: 0px;">{{auth()->user()->name}}</h1>
@@ -22,7 +22,7 @@
                             <p class="card-text d-block"><b><span>@</span>{{auth()->user()->username}}</b></p>
                             <p class="card-text d-block"><b>{{auth()->user()->email}}</b></p>
                             <p class="card-text d-block"><b>05 / 08 / 1996</b></p>
-                            <button type="button" class="btn btn-primary w-100" >Edit Details</button>
+                            <a href="{{route('accountEdit')}}"><button type="button" class="btn btn-primary w-100" >Edit Details</button></a>
                             <div class="w-100 border-bottom mt-3"></div>
                             <div class="justify-content-between ml-1 mt-3">
                                 @for($i=0; $i<=8; $i++)
@@ -38,7 +38,7 @@
                                 <div class="card d-block m-2 pb-1">
                                     <div class="card-body row mb-0 pb-1">
                                         <div class="col-sm-1 mr-2" > 
-                                            <div style="height: 50px; width: 50px; background-color: gray; border-radius:50px; "></div> 
+                                            <img src="{{ auth()->user()->present()->avatar() }}" style=" height:50px; width:50px; border-radius: 50px;"></img>
                                         </div>
                                         <div class="col-sm-10">
                                             <h4>Rhodri Richards</h4>

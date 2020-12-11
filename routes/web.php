@@ -23,8 +23,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/account/profile', [AccountController::class, 'index'])->name('accountProfile');
+Route::get('/account/edit', [AccountController::class, 'editIndex'])->name('accountEdit');
 
 Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
 Route::get('/conversations/{conversation}', [ConversationController::class, 'show'])->name('conversations.show');
+Route::post('/conversations/{message}', [ConversationController::class, 'reply'])->name('conversations.reply');
 

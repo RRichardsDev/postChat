@@ -27,4 +27,16 @@ class ConversationController extends Controller
 
         return view('conversations.show', compact('conversations', 'chat') );
     }
+    public function reply(Conversation $conversation, Request $request)
+    {
+        $conversation = Conversation::where('uuid', '=', $_POST["conversation-id"])->first();
+        $conversation->messages()->create([
+            'user_id' => auth()->id(),
+            'body' => $_POST['message-text']
+        ]);
+        
+        $conversation_id = 1;
+        $user_id = 1;
+        $message = 'hello';
+    }
 }

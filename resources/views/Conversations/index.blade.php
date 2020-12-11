@@ -28,13 +28,13 @@
         <div id="users-container">
             <div class="d-flex justify-content-between p-3">
                 <p class="font-weight-bold">Create a new chat...</p>
-                <a class="font-weight-bold" id="convosation_add_someone" href="#">Add someone...</a>
+                <a class="font-weight-bold" id="convosation_new_add_someone" href="#">Add someone...</a>
             </div>
         </div>
         <div id="messages-container"></div>
         <div id="message-send-container" style="width:100%;">
             <form id="message-send">
-                <div class="form-group mb-2">
+                <div class="form-group mb-2">                    
                     <textarea class="form-control" name="" id="message-text" cols="100" rows="5"></textarea>
                     <button class="btn btn-primary float-right mt-1"type="submit" id="send_message">Send</button>
                 </div>

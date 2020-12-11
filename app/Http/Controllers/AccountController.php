@@ -14,4 +14,8 @@ class AccountController extends Controller
     {
     	return view('account.profile');
     }
+    public function editIndex()
+    {
+    	return view('account.edit');
+    }
 }

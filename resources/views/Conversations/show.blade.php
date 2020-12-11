@@ -31,7 +31,7 @@
             <div class="d-flex justify-content-between p-3">
                 <div class="font-weight-bold">
                     @foreach($chat->users as $user)
-                        {{$user->present()->name()}}@if($chat->users->last() != $user), @endif 
+                        <img class="rounded-circle"style="width:30px; height:30px;" src="{{$user->present()->avatar()}}" alt=""> {{$user->present()->name()}}@if($chat->users->last() != $user), @endif 
                     @endforeach
                 </div>
                 <a class="font-weight-bold" id="convosation_add_someone" href="#">Add someone...</a>  
@@ -43,6 +43,7 @@
                 {{-- If its the users message use the message-sent class --}}
                 @if($message->user_id == auth()->id())
                     <div class="message-sent-container">
+                        {{-- <img src="{{ $message->user->present()->avatar() }}" alt="{{ $message->user->name }}"> --}}
                         <div class="message-sent" >
                             {{$message->body}}
                         </div>
@@ -65,10 +66,14 @@
         </div>
 {{-- Send message section --}}
         <div id="message-send-container" style="width:100%;">
-            <form id="message-send">
+            <form id="message-send" action="{{ route('conversations.reply', $chat) }}" method="post">
+                @csrf
                 <div class="form-group mb-2">
-                    <input type="hidden" id="message-user-name" value="{{auth()->user()->name}}">
-                    <textarea class="form-control" name="" id="message-text" cols="100" rows="5"></textarea>
+                    {{-- {{ dd( json_decode($chat) ) }} --}}
+                    <input type="hidden" id="chat-object" value="{{ $chat }}">   
+                    <input type="hidden" id="chat-id" value="{{ $chat->uuid }}">                 
+                    <input type="hidden" id="message-user-name" value="{{ auth()->user()->name }}">
+                    <textarea class="form-control" name = "message-text" id="message-text" cols="100" rows="5"></textarea>
                     <button class="btn btn-primary float-right mt-1"type="submit" id="send_message">Send</button>
                 </div>
             </form>                

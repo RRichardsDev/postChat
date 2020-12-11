@@ -20,4 +20,13 @@ class UserPresenter
 
 		return $this->model->name;
 	}
+	public function avatar()
+	{
+		return 'https://www.gravatar.com/avatar/' . md5($this->model->email) . '?s=200&d=mm';
+	}
+	public function profilePic()
+	{
+		return 'https://www.gravatar.com/avatar/' . md5($this->model->email) . '?s=500&d=mm';
+	}
+
 }

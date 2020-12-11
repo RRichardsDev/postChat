@@ -1,86 +1,72 @@
 $(document).ready(function()
 {
 	scrollToBottom();
-    // $('body').on('click','.message-thumb',function(e) {
-    //      // e.preventDefault()
-    //      // $("#test-message").text($(this).text());
-    //      alert($conversations);
-    // });
-    // fetchRecords(0);
-
-    $(".message-thumb").click(function(){
-    	// event.preventDefault();
-    	// alert($(this).text())
+    // $(".message-thumb").click(function(){
     	
-    })
+    // 	alert($(this).users);
+    	
+    // })
     $("#send_message").click(function(){
     	event.preventDefault();
-        var message = $("#message-text").val();
-        var messageUser = $("#message-user-name").val();
-    	$("#message-text").val('');
-    	$( "#messages-container" ).append( '<div class="message-sent-container">' +
-                                            '<div class="message-sent" >' +
-                                                message +
-                                            '</div>' +
-                                            '<div class="message-sent-name">' +
-                                                 '<p class="text-muted ">'+ messageUser +'</p>' +
-                                            '</div>' +
-                                        '</div>'
-                                    );
-    	scrollToBottom();
-    })
+      var chat_id = $('#message-chat').val();
+      var message = $("#message-text").val();
+      var userId = $("#message-user-id").val();
+      var messageUser = $("#message-user-name").val();
+      var chat_object = $("chat-object");
+      console.log($("chat-object"));
 
-
-    function scrollToBottom(){
-    	var d = $('#messages-container');
-		d.scrollTop(d.prop("scrollHeight"));
+    if($("#message-text").val() !== ""){
+          reply(userId, message);
+          displaySentMessage(message, messageUser, chat_object);
     }
+
+  })
 })
 
-function fetchRecords(id){
-       $.ajax({
-         url: 'messages/'+id,
-         type: 'get',
-         dataType: 'json',
-         success: function(response){
-            
-           var len = 0;
-           
-           if(response['data'] != null){
-              len = response['data'].length;
-           }
+function displaySentMessage(message, messageUser){
+  
+    $("#message-text").val('');
+    $( "#messages-container" ).append( 
+        '<div class="message-sent-container">' +
+            '<div class="message-sent" >' +
+                message +
+            '</div>' +
+            '<div class="message-sent-name">' +
+                '<p class="text-muted ">'+ messageUser +'</p>' +
+            '</div>' +  
+        '</div>'
+        );
 
-           if(len > 0){
-              for(var i=0; i<len; i++){
-                 var id = response['data'][i].id;
-                 var sender = response['data'][i].sender_id;
-                 var reciever = response['data'][i].reciever_id;
-                 var message = response['data'][i].message;
+scrollToBottom();
+}
 
-                // alert('id= ' + id + " sender_id= " + sender +"reciever_id= " + reciever + "message= " + message);
+function scrollToBottom(){
+    var d = $('#messages-container');
+    d.scrollTop(d.prop("scrollHeight"));
+}
 
-                var conversationThumb =  '<a href="/" class="message-thumb d-block p-4 mb-2">' +
-                                            '<div class="font-weight-bold">' +
-                                                sender +
-                                            '</div>' +
-                                            '<p class="text-muted mb-0 text-truncate d-flex align-items-center">' +
-                                                '<span>'+ message +'</span>' +
-                                            '</p> ' +
-                                        '</a>';
+function reply(userId, message, chat_object){
+    
+    var chat_id = $("#chat-id").val();
+    console.log(chat_id);
 
-                $('#conversation_container').append(conversationThumb);
-                 
-              }
-           }else{
-              var tr_str = "<tr>" +
-                  "<td align='center' colspan='4'>No record found.</td>" +
-              "</tr>";
-
-              $("#userTable tbody").append(tr_str);
-           }
-
-         }
-
-       });
-     }
-
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+    $.ajax({
+        url: '/conversations/{'+ chat_id +'}',
+        type: 'post',
+        dataType: 'json',
+        data: {
+        "userId" : userId,
+        "message-text": message,
+        // "conversation" : chat_object,
+        "conversation-id" : chat_id,
+        },
+        success: function(response){
+          alert(1);
+        }
+    });
+};

@@ -11,6 +11,16 @@ class Message extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+    	'user_id',
+    	'body',
+    ];
+
+    public function isOwn()
+    {
+    	return $this->user_id === auth()-id();
+    }
+
     public function conversation()
     {
     	return $this->belongsTo(Conversation::class);
