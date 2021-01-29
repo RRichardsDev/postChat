@@ -1,26 +1,29 @@
 $(document).ready(function()
 {
 	scrollToBottom();
-    // $(".message-thumb").click(function(){
-    	
-    // 	alert($(this).users);
-    	
-    // })
     $("#send_message").click(function(){
     	event.preventDefault();
-      var chat_id = $('#message-chat').val();
-      var message = $("#message-text").val();
-      var userId = $("#message-user-id").val();
-      var messageUser = $("#message-user-name").val();
-      var chat_object = $("chat-object");
-      console.log($("chat-object"));
-
-    if($("#message-text").val() !== ""){
+        var chat_id = $('#message-chat').val();
+        var message = $("#message-text").val();
+        var userId = $("#message-user-id").val();
+        var messageUser = $("#message-user-name").val();
+        var chat_object = $("chat-object");
+        
+        if($("#message-text").val() !== ""){
           reply(userId, message);
           displaySentMessage(message, messageUser, chat_object);
-    }
+        }
 
-  })
+    })
+    $("#profilePicture").click(function(){
+        event.preventDefault();
+        $("#profilePictureUpload").click();
+        $("#editAccountSubmit").prop('disabled', true);
+        // setTimeout( function() {
+        //     $("#editAccountSubmit").prop('disabled', false);
+        // }, 20000);
+    });
+    
 })
 
 function displaySentMessage(message, messageUser){

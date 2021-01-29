@@ -6,16 +6,18 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-body pb-0">
-                	<form action="#">
+                	<form enctype="multipart/form-data" method="post" action="{{route('accountUpdate')}}">
+                		@csrf
                 		<div class="row mb-4">
 	                        <div class="col-md-3">
-	                            <a href="#"><img src="{{ auth()->user()->present()->profilePic() }}" style="height: 200px; width: 200px; background-color: gray; "></img></a>
+	                            <a id="profilePicture"href="#"><img src="{{ auth()->user()->present()->profilePic() }}" style="height: 200px; width: 200px; background-color: gray; "></img></a>
+	                            <input type="file" id="profilePictureUpload" name="profilePictureUpload" style="display: none;" />
 	                        </div>	                        
 	                    </div>
                 		<div class="row">                			
 	                		<div class="form-group col-6">          
 	                			<label for="firstName">First name:</label>
-	                			<input class="form-control" type="text" name="firstName" placeholder={{auth()->user()->name}}>
+	                			<input class="form-control" type="text" name="name" placeholder={{auth()->user()->name}}>
 		                	</div>
 		                	<div class="form-group col-6">   		                		
 	                			<label for="lastName">Last name:</label>
@@ -49,7 +51,7 @@
                 		
 	                		<div class="form-group col-12 ">
 	                			
-	                			<button class="btn btn-primary position-relative float-right" id="editAccountSubmit" name="submit" >Submit</button>
+	                			<button type="submit" class="btn btn-primary position-relative float-right" id="editAccountSubmit" name="submit" >Submit</button>
 		                	</div>		         
                 		</div>
                 	</form>
