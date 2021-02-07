@@ -42,6 +42,7 @@
                     <p id="landing-section-title">Future features:
                         <ul id="landing-section-body">
                             <li>Real-time message updating using <b>livewire</b>.</li>
+                            <li>Photo albums.</li>
                         </ul>
                     </p>
                 </div>

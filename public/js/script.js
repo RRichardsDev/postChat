@@ -1,8 +1,55 @@
 $(document).ready(function()
 {
-	scrollToBottom();
+    scrollToBottom();
     $("#send_message").click(function(){
-    	event.preventDefault();
+        sendMessage()
+    })
+    $("#message-text").keypress(function(event) {
+        if (event.which == 13) {
+            sendMessage()
+         }
+    });
+    $("#profilePicture").click(function(){
+        event.preventDefault();
+        $("#profilePictureUpload").click();
+        
+    });
+})
+
+
+users = [];
+function addUserToList(user){
+    if($.inArray(user, users) == -1 ){
+        users.push(user)
+        if(!$("#userList a").first().length ){
+            $( "#userList" ).append('<a href="#" class="suggestion" data-value="'+user.id+'"">'+user.name+'</a>');
+        }else{
+            $( "#userList" ).append('<a href="#" class="suggestion" data-value="'+user.id+'">, '+user.name+'</a>');
+        }
+    }else{
+        alert('User already added!')
+    }
+}
+
+$("body").delegate(".suggestion", "click", function(){
+    removeUser($(this).data('value'))
+
+});
+$("#pushing").click(function(){
+    console.log(users)
+});
+function removeUser(id){
+    data: []
+    fetch('/api/search/users/id?q='+id)
+        .then(response => response.json())
+        .then(data => {
+            users.splice( $.inArray(data, users), 1 );
+            console.log(users)
+        })
+    $("#userList a[data-value="+id+"]").remove();
+}
+function sendMessage(){
+        event.preventDefault();
         var chat_id = $('#message-chat').val();
         var message = $("#message-text").val();
         var userId = $("#message-user-id").val();
@@ -13,18 +60,8 @@ $(document).ready(function()
           reply(userId, message);
           displaySentMessage(message, messageUser, chat_object);
         }
+}
 
-    })
-    $("#profilePicture").click(function(){
-        event.preventDefault();
-        $("#profilePictureUpload").click();
-        $("#editAccountSubmit").prop('disabled', true);
-        // setTimeout( function() {
-        //     $("#editAccountSubmit").prop('disabled', false);
-        // }, 20000);
-    });
-    
-})
 
 function displaySentMessage(message, messageUser){
   

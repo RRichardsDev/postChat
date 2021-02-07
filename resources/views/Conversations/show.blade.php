@@ -4,6 +4,11 @@
 <div class="container d-flex">
 {{-- Sidebar section --}}
     <div id="conversation_container" class="col-md-4">
+        <a href="{{ route('conversations.create') }}" class="message-thumb d-block p-4 mb-2">
+            <div class="font-weight-bold">
+                New chat...
+            </div>
+        </a>
         @if($conversations->count())
             @foreach($conversations as $conversation)
                 <a href="{{route('conversations.show', $conversation)}}" class="message-thumb d-block p-4 mb-2">
@@ -16,6 +21,9 @@
                     </div>
                     {{-- Last message in convosation preview --}}
                     <p class='text-muted mb-0 text-truncate d-flex align-items-center'>
+                        @if(!$conversation->pivot->read_at)
+                            <span class="bg-primary mr-2 rounded-circle" style="width:8px;height:8px;"></span>
+                        @endif
                         <span>{{$conversation->messages->last()->body}}</span>
                     </p>
                 </a>
@@ -48,7 +56,7 @@
                             {{$message->body}}
                         </div>
                         <div class="message-sent-name">
-                             <p class="text-muted ">{{$message->user->name}}</p>
+                             <p class="text-muted ">{{$message->user->present()->name()}}</p>
                         </div>
                     </div>
                 @else

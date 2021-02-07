@@ -4,24 +4,24 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
-                
-                
-                
-                <div class="card-body">
 
+            <div class="card">
+                <div class="card-body">
                     <div class="container col-md-11">
                         <h4 class="text-muted">Post something...</h4>
                         <form action="#">
-                        <div class="row justify-content-center mt-1">
-                            <textarea class="form-control" name="post_text" id="" cols="80" rows="4"></textarea>
-                        </div>
-                        <div class="row justify-content-end mt-1">
-                            <button class="btn btn-primary">Post</button>
-                        </div>
-
-                    </form>
+                            <div class="row justify-content-center mt-1">
+                                <textarea class="form-control" name="post_text" id="" cols="80" rows="4"></textarea>
+                            </div>
+                            <div class="row justify-content-end mt-1">
+                                <button class="btn btn-primary">Post</button>
+                            </div>
+                        </form>
                     </div>
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

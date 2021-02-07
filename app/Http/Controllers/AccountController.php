@@ -25,15 +25,17 @@ class AccountController extends Controller
     	$user = auth()->user();
 
     	($_POST['name'] != null ? $user->name = $_POST['name'] : $user->name = auth()->user()->name );
+        ($_POST['lastName'] != null ? $user->lastName = $_POST['lastName'] : $user->lastName = auth()->user()->lastName );
     	($_POST['email'] != null ? $user->email = $_POST['email'] : $user->email = auth()->user()->email );
     	($_POST['username'] != null ? $user->username = $_POST['username'] : $user->username = auth()->user()->username );
+        ($_POST['bios'] != null ? $user->bios = $_POST['bios'] : $user->bios = auth()->user()->bios );
 
     	
     	$profilePicFile;
     	if($_FILES['profilePictureUpload']['name'] != null)
     	{
     		$profilePicFile = $this->uploadProfilePic();
-    		//$user->profilePicture = $profilePicFile;
+    		$user->profilePicture = $profilePicFile;
     	} ;
 
     	$user->save();
@@ -54,6 +56,6 @@ class AccountController extends Controller
         $img->save('profilePictures/'. $filename);
 
 
-		return ('profilePictures/'. $filename);
+		return ($filename);
     }
 }

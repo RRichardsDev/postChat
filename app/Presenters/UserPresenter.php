@@ -22,11 +22,11 @@ class UserPresenter
 	}
 	public function avatar()
 	{
-		return 'https://www.gravatar.com/avatar/' . md5($this->model->email) . '?s=200&d=mm';
+		return "/profilePictures/" . $this->model->profilePicture;
 	}
 	public function profilePic()
 	{
-		return 'https://www.gravatar.com/avatar/' . md5($this->model->email) . '?s=500&d=mm';
+		return "/profilePictures/" . $this->model->profilePicture;
 	}
 
 }

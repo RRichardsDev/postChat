@@ -9,9 +9,10 @@
                     <div class="row mb-4">
                         <div class="col-md-3">
                             <a href="#"><img src="{{ auth()->user()->present()->profilePic() }}" style="height: 200px; width: 200px; background-color: gray; "></img></a>
+                            {{-- <a href="#"><img src="/profilePictures/1611956367.jpg" style="height: 200px; width: 200px; background-color: gray; "></img></a> --}}
                         </div>
                         <div class="col-md-9 justify-content-bottom">
-                            <h1 class="card-title mb-0" style="position: absolute; bottom: 0px;">{{auth()->user()->name}}</h1>
+                            <h1 class="card-title mb-0" style="position: absolute; bottom: 0px;">{{auth()->user()->name}} {{auth()->user()->lastName}}</h1>
                         </div>
                     </div>
                     

@@ -122,3 +122,12 @@ a:hover {
 	padding-left: 2.5rem;
 }
 
+img:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-image: url(/profilePictures/default-avatar.png);
+    }
+

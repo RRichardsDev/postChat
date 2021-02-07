@@ -29,6 +29,8 @@ Route::get('/account/edit', [AccountController::class, 'editIndex'])->name('acco
 Route::post('/account/edit', [AccountController::class, 'update'])->name('accountUpdate');
 
 Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
+Route::get('/conversations/create', [ConversationController::class, 'create'])->name('conversations.create');
 Route::get('/conversations/{conversation}', [ConversationController::class, 'show'])->name('conversations.show');
 Route::post('/conversations/{message}', [ConversationController::class, 'reply'])->name('conversations.reply');
+Route::post('/conversations/{user}', [ConversationController::class, 'addUser'])->name('conversations.addUser');
 

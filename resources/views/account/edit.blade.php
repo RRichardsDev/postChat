@@ -21,7 +21,7 @@
 		                	</div>
 		                	<div class="form-group col-6">   		                		
 	                			<label for="lastName">Last name:</label>
-	                			<input class="form-control" type="text" name="lastName" placeholder={{auth()->user()->name}}>	       
+	                			<input class="form-control" type="text" name="lastName" placeholder={{auth()->user()->lastName}}>	       
 	                		</div>
                 		</div>
                 		<div class="row">
@@ -43,7 +43,7 @@
                 		<div class="row">
 	                		<div class="form-group col-6">
 	                			<label for="bios">Bios:</label>
-	                			<textarea class="form-control" name="dob" rows="5"></textarea>
+	                			<textarea class="form-control" name="bios" rows="5" placeholder="{{auth()->user()->bios}}"></textarea>
 		                	</div>
 		                </div>	   
 		                <div class="row">

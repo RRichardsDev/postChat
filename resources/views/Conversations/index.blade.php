@@ -3,6 +3,11 @@
 @section('content')
 <div class="container d-flex">
     <div id="conversation_container" class="col-md-4">
+        <a href="{{ route('conversations.create') }}" class="message-thumb d-block p-4 mb-2">
+            <div class="font-weight-bold">
+                New chat...
+            </div>
+        </a>
         {{-- checking for, then looping through all logged in user conversations --}}
         @if($conversations->count())
             @foreach($conversations as $conversation)
@@ -15,7 +20,10 @@
                         @endforeach
                     </div>
                     <p class='text-muted mb-0 text-truncate d-flex align-items-center'>
-                        <span>This is a test message.</span>
+                        @if(!$conversation->pivot->read_at)
+                            <span class="bg-primary mr-2 rounded-circle" style="width:8px;height:8px;"></span>
+                        @endif
+                         <span>{{$conversation->messages->last()->body}}</span>
                     </p>
                 </a>
             @endforeach
@@ -24,7 +32,7 @@
         @endif
     </div>
     {{-- show message --}}
-    <div id="message-container" class="col-md-8">
+    {{-- <div id="message-container" class="col-md-8">
         <div id="users-container">
             <div class="d-flex justify-content-between p-3">
                 <p class="font-weight-bold">Create a new chat...</p>
@@ -40,6 +48,6 @@
                 </div>
             </form>                
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection
